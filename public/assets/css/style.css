@@ -1,3 +1,4 @@
+
 /*css navbar*/
 .nav-item{
     text-align: center;
@@ -5,4 +6,9 @@
 
 .navbar-brand{
     font-size: 24px;
+
+/* style homepage */
+
+.banniere{
+    padding: 0 ;
 }
