@@ -28,5 +28,4 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/booking.html.twig');
     }
-
 }
