@@ -1,0 +1,76 @@
+/* css footer */
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    background-color: #6495ed ;
+}
+.nav flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.nav-link{
+    color: aliceblue;
+    font-size: 0.7em;
+}
+.center{
+    align-self: flex-end;
+    margin-right: 10%;
+}
+.right{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    text-align: left;
+    padding-top:0;
+}
+.contact{
+    text-align: left;
+}
+.a-contact{
+    color: aliceblue;
+    font-size: 0.7em;
+}
+.address{
+    font-size: 0.7em;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+span{
+    text-align: left;
+    color: aliceblue;
+}
+.reseau{
+    align-self: flex-end;
+    margin-right: 5%;
+}
+.reseau p{
+    color: aliceblue;
+    font-size: 0.7em;
+}
+.fa{
+    color: aliceblue;
+}
+
+
+/*css navbar*/
+.nav-item{
+    text-align: center;
+}
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.textenav{
+    color: white;
+}
+
+/* style homepage */
+
+.banniere{
+    padding: 0;
+
+}
+
