@@ -1,0 +1,91 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/css/booking.css">
+{% endblock %}
+
+
+
+{% block content %}
+    <h2>Réservation</h2>
+    <div class="form">
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="departureStation">Station de départ</label>
+                    <select id="departureStation" class="form-control">
+                        <option selected>Sélectionnez...</option>
+                        <option>Place Bellecour</option>
+                        <option>Gare Part-Dieu</option>
+                        <option>Aéroport Saint-Exupéry</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="arrivalStation">Station d'arrivée</label>
+                    <select id="arrivalStation" class="form-control">
+                        <option selected>Sélectionnez...</option>
+                        <option>Place Bellecour</option>
+                        <option>Gare Part-Dieu</option>
+                        <option>Aéroport Saint-Exupéry</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label for="inputFirstname">Prénom</label>
+                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputLastname">Nom</label>
+                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputAge">Age</label>
+                    <input type="number" class="form-control" id="inputAge" min="16" max="99" value="16">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail">
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress">Adresse</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">Ville</label>
+                    <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">Pays</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>France</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Code postal</label>
+                    <input type="text" class="form-control" id="inputZip">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        J'accepte les <a href="#">CGV</a>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Réserver!</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}
