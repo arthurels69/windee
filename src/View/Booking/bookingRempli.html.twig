@@ -12,23 +12,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="departureStation">Station de départ</label>
-                    <select id="departureStation" class="form-control">
-                        <option selected>Sélectionnez...</option>
-                        {% for station in stations %}
-                            <option>{{ station.station_name }}</option>
-
-                        {% endfor %}
-                    </select>
+                    <input type="text" class="form-control" id="inputFirstname" value="{{ arrayStation.stationD.station_name }} {{ arrayStation.depart }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="arrivalStation">Station d'arrivée</label>
-                    <select id="arrivalStation" class="form-control">
-                        <option selected>Sélectionnez...</option>
-                        {% for station in stations %}
-                            <option>{{ station.station_name }}</option>
-
-                        {% endfor %}
-                    </select>
+                    <input type="text" class="form-control" id="inputFirstname" value="{{ arrayStation.stationA.station_name }} {{ arrayStation.arrivee }}">
                 </div>
             </div>
             <div class="form-row">
@@ -86,4 +74,4 @@
     </div>
 {% endblock %}
 
-
+{% block javascript %}{% endblock %}
