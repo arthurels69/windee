@@ -4,15 +4,22 @@
 namespace App\Controller;
 
 use App\Model\StationManager;
+use App\Model\VehiculeManager;
 
 class BookingController extends AbstractController
 {
+
     public function booking()
     {
-        $listeStations = new StationManager();
-        $liste = $listeStations->selectAll();
+        $listeVehicule = new VehiculeManager();
+        $listeVehicule = $listeVehicule->selectAll();
 
-        return $this->twig->render('Booking/booking.html.twig', ['stations' => $liste]);
+        $listeStations = new StationManager();
+        $listeStations = $listeStations->selectAll();
+
+        $tabDetails = ['stations' => $listeStations, 'vehicule' => $listeVehicule];
+
+        return $this->twig->render('Booking/booking.html.twig', ['tabDetails' => $tabDetails]);
     }
 
     public function bookingRempli()
@@ -21,6 +28,8 @@ class BookingController extends AbstractController
         $stationA = "";
         $depart = "";
         $arrivee = "";
+        $listeVehicule = new VehiculeManager();
+        $listeVehicule = $listeVehicule->selectAll();
         if (isset($_POST['id'])) {
             $stations = $_POST['id'];
             $stations = explode('-', $stations);
@@ -35,7 +44,33 @@ class BookingController extends AbstractController
         if (isset($_POST['depart'])) {
             $arrivee = $_POST['arrivee'];
         }
-        $arrayStation=['stationD' => $stationD, 'stationA' => $stationA, 'depart' => $depart, 'arrivee' => $arrivee];
-        return $this->twig->render('Booking/bookingRempli.html.twig', ['arrayStation'=>$arrayStation]);
+
+        $arrayStation = ['stationD' => $stationD, 'stationA' => $stationA, 'depart' => $depart, 'arrivee' => $arrivee];
+        $arrayStation['vehicule']=$listeVehicule;
+
+        return $this->twig->render('Booking/bookingRempli.html.twig', ['arrayStation' => $arrayStation]);
+    }
+
+    public function recapitulatif()
+    {
+        $depart=$_POST['depart'];
+        $arrivee=$_POST['arrivee'];
+        $capacite=$_POST['capacite'];
+        $date=$_POST['date'];
+        $heure=$_POST['heure'];
+        $mail=$_POST['mail'];
+        $nom=$_POST['nom'];
+        $prenom=$_POST['prenom'];
+
+        $array=['dep'=>$depart,'arri'=>$arrivee, 'capa'=>$capacite, 'date'=>$date, 'heure'=>$heure, 'mail'=>$mail];
+        $array['nom']=$nom;
+        $array['prenom']=$prenom;
+
+        return $this->twig->render('Booking/recapitulatif.html.twig', ['arrayRecap' => $array]);
+
+    }
+
+    public function final(){
+        return $this->twig->render('Booking/final.html.twig');
     }
 }
