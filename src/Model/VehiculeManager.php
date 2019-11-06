@@ -3,7 +3,6 @@
 
 namespace App\Model;
 
-
 class VehiculeManager extends AbstractManager
 {
     public function __construct()
