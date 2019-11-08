@@ -15,7 +15,10 @@ script:
 notifications:
     email:
         - TRAINER@wildcodeschool.fr
-        - STUDENT_MAIL
+        - ath.engels@gmail
+        - hamimed.walid@gmail.com
+        - sofiane.dahouzi@gmail.com
+        - philippe.perrin.oullins@gmail.com
 branches:
     only:
         - master
