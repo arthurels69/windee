@@ -8,24 +8,15 @@
 
 namespace App\Controller;
 
+use App\Model\StationManager;
+
 class HomeController extends AbstractController
 {
-
-    /**
-     * Display home page
-     *
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
-    }
+        $listeStations=new StationManager();
+        $liste=$listeStations->selectAll();
 
-    public function booking()
-    {
-        return $this->twig->render('Home/booking.html.twig');
+        return $this->twig->render('Home/index.html.twig', ['stations'=>$liste]);
     }
 }

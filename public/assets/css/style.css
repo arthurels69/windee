@@ -1,60 +1,23 @@
 /* css footer */
+.page-footer{
+    background-color:#6495ed ;
+    color: white;
+}
+.footer-social a{
 
-.footer{
-    display: flex;
-    justify-content: space-between;
-    background-color: #6495ed ;
-}
-.nav flex-column{
-    display: flex;
-    flex-direction: column;
-}
-.nav-link{
-    color: aliceblue;
-    font-size: 0.7em;
-}
-.center{
-    align-self: flex-end;
-    margin-right: 10%;
-}
-.right{
-    display: flex;
-    justify-content: space-between;
-    width: 40%;
-    text-align: left;
-    padding-top:0;
-}
-.contact{
-    text-align: left;
-}
-.a-contact{
-    color: aliceblue;
-    font-size: 0.7em;
-}
-.address{
-    font-size: 0.7em;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-span{
-    text-align: left;
-    color: aliceblue;
-}
-.reseau{
-    align-self: flex-end;
-    margin-right: 5%;
-}
-.reseau p{
-    color: aliceblue;
-    font-size: 0.7em;
-}
-.fa{
-    color: aliceblue;
-}
+    margin: 2%;
 
-
+}
+.page-footer a{
+    text-decoration: none;
+}
+.footer-a a:hover{
+    color: lightgrey!important;
+}
 /*css navbar*/
+.navbar-nav a:hover{
+    color: lightgrey!important;
+}
 .nav-item{
     text-align: center;
 }
@@ -73,4 +36,35 @@ span{
     padding: 0;
 
 }
+
+/*style booking */
+
+h2 {
+    text-align: center;
+    margin: 50px 0;
+}
+
+form {
+    width: 80%;
+    margin: 30px auto;
+}
+
+form button {
+    margin: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+
+    form {
+        width: 50%;
+    }
+
+}
+/*page final */
+.final{
+    margin-top: 200px ;
+    margin-bottom: 200px;
+    text-align: center;
+}
+
 

@@ -4,8 +4,6 @@
 {% block content %}
 
 
-
-
     <div class="container-fluid">
 
 
@@ -21,13 +19,28 @@
             <iframe class=" col-sm-6 ml-auto mr-auto offset-2 col-md-6 order-md-2 mb-5"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.2419639501527!2d4.824980115793922!3d45.74629492259623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea4ac9e1fd2f%3A0xabc36e768b27c9a0!2sWild%20Code%20School%20-%20Formation%20d%C3%A9veloppeur%20web%20%26%20data%20analyst!5e0!3m2!1sfr!2sfr!4v1571919383091!5m2!1sfr!2sfr" width="600" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 
-            <form class=" col-sm-8 ml-auto mr-auto offset-2 col-md-4 order-md-1 text-center mb-5">
+            <form class=" col-sm-8 ml-auto mr-auto offset-2 col-md-4 order-md-1 text-center mb-5" method="post" action="/Booking/bookingRempli">
                 <label>Départ</label><br>
-                <input class="mb-3" size="30"><br>
+                <select name="depart"  id="departureStation" class="form-control mb-3">
+                    <option selected>Sélectionnez...</option>
+                    {% for station in stations %}
+                    <option>{{ station.station_name }}</option>
+
+                    {% endfor %}
+                </select>
+
                 <label>Arrivée</label><br>
-                <input size="30"><br>
-                <button class="btn btn-primary submit mt-4">Réserver</button>
+                <select name="arrivee" id="arrivalStation" class="form-control mb-3">
+                    <option selected>Sélectionnez...</option>
+                    {% for station in stations %}
+                        <option>{{ station.station_name }}</option>
+
+                    {% endfor %}
+                </select>
+                <button class="btn btn-primary submit mt-4 text-white " >Réserver</button>
             </form>
+
+
 
 
         </div>
@@ -38,33 +51,46 @@
     <div class="container-fluid">
         <div class="row">
             <div class="imgCorps col-sm-6 col-md-4 text-center mb-4">
-                <img src="https://via.placeholder.com/200" class="rounded-circle mb-4">
-                <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
+            <form action="/booking/bookingRempli" method="post">
+                <input type="hidden"
+                name="id"
+                value={{ stations.0.id }}-{{ stations.1.id }}>
 
+                <img src="https://via.placeholder.com/200" class="rounded-circle mb-4">
+                <p>Nous pouvons vous proposer un trajet entre {{  stations.0.station_name}} et {{  stations.1.station_name}}  en un temps record</p>
+                <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>
+
+
+            </form>
             </div >
+            <div class="imgCorps col-sm-6 col-md-4 text-center mb-4">
 
-            <div class="col-sm-6 col-md-4 imgCorps text-center mb-4" >
-                <img src="https://via.placeholder.com/200" class="rounded-circle mb-4">
-                <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
+            <form action="/booking/bookingRempli" method="post">
+                <input type="hidden"
+                       name="id"
+                       value="{{ stations.2.id }}-{{ stations.3.id }}">
 
-            </div>
-            <div class="col-sm-6 col-md-4  text-center   imgCorps mb-4">
-                <img src="https://via.placeholder.com/200" class="rounded-circle mb-4">
-                <p>Et prima post Osdroenam quam, ut dictum est, ab hac descriptione discrevimus, Commagena, nunc Euphratensis, clementer adsurgit, Hierapoli, vetere Nino et Samosata civitatibus amplis inlustris.</p>
+                    <img src="https://via.placeholder.com/200" class="rounded-circle mb-4">
+                    <p>Nous pouvons vous proposer un trajet entre {{  stations.2.station_name}} et {{  stations.3.station_name}}  en un temps record</p>
+                    <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>
+            </form>
+                </div >
+            <div class="imgCorps col-sm-6 col-md-4 text-center mb-4">
+            <form action="/booking/bookingRempli" method="post">
+                <input type="hidden"
+                       name="id"
+                       value="{{ stations.4.id }}-{{ stations.1.id }}">
+
+                    <img src="https://via.placeholder.com/200" class="rounded-circle mb-4">
+                    <p>Nous pouvons vous proposer un trajet entre {{  stations.4.station_name}} et {{  stations.1.station_name}}  en un temps record</p>
+                    <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>
 
 
-            </div>
-
+            </form>
+        </div >
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 {% endblock %}
 
 

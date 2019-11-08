@@ -17,9 +17,10 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <link rel="stylesheet" href="/assets/css/style.css">
-   
+
     <link rel="icon" href="/assets/images/favicon.png">
     <link rel="stylesheet" href="/assets/css/style.css">
+
     {% endblock %}
 
 
@@ -29,20 +30,22 @@
 <body>
 {% block nav %}
     <nav class="textenav navbar navbar-dark navbar-expand-lg " style="background: cornflowerblue">
-        <a class="navbar-brand text-white" href="#">Windee</a>
+        <a class="navbar-brand text-white" href="/home/index">Windee</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="home/index">Accueil</a>
+
+                    <a class="nav-link text-white" href="/Home/index">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="home/index">Réservation</a>
+                    <a class="nav-link text-white" href="/Booking/booking">Réservation</a>
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Concept</a>
+                    <a class="nav-link text-white" href="/Concept/index">Concept</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">Connexion</a>
@@ -55,38 +58,68 @@
 
 {% block content %}
 {% endblock %}
-
-
-
-
-
 {% block footer %}
-    <div class="footer">
-        <nav class="nav flex-column">
-            <a class="nav-link" href="home/index">Accueil</a>
-            <a class="nav-link" href="Home/booking">Réservation</a>
-            <a class="nav-link" href="Home/booking">Concept</a>
-            <a class="nav-link" href="Home/booking">Connexion</a>
-        </nav>
-        <div class="right">
-            <div class="center">
-                <p class="contact"><a href="#" class="a-contact">Contact</a></p>
-                <div class="address">
-                    <span>Windee - support technique</span>
-                    <span>17 rue Delandine</span>
-                    <span>69002 Lyon</span>
-                </div>
-            </div>
-            <div class="reseau">
-                <p>Follow Us</p>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            </div>
-        </div>
-    </div>
-    <p style="font-size: 0.5em;">@windee 2019 - WildCodeSchool - Projet2</p>
 
+    <footer class="page-footer font-small blue py-4 mt-4">
+
+        <!-- Footer Links -->
+        <div class="footer-a container text-center text-md-left">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3  mt-md-0 mt-3">
+                    <!-- Content -->
+                    <h5 >Nous trouver</h5>
+                    <br>
+                    <p>Conception: 17 rue Delandine 69002 Lyon</p>
+                    <p>Bureau : 20 avenue de la Répubique 69002 Lyon</p>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-3 mb-md-0 mb-3">
+                </div>
+                <!-- Grid column -->
+                <div class=" col-md-3 mb-md-0 mb-3">
+                    <!-- Links -->
+                    <h5>Informations</h5>
+                    <br>
+                    <ul class=" list-unstyled">
+                        <li>
+                            <a class="text-white" href="/Home/index">Accueil</a>
+                        </li>
+                        <li>
+                            <a class="text-white" href="/Booking/booking">Reservation</a>
+                        </li>
+                        <li>
+                            <a class="text-white" href="/Concept/index">Concept</a>
+                        </li>
+                        <li>
+                            <a class="text-white" href="https://www.wildcodeschool.com/fr-FR">Lien WildCodeSchool</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <!-- Links -->
+                    <h5>Nous suivre</h5>
+                    <br>
+                    <ul class="footer-social list-unstyled">
+                        <li>
+                            <a href="#" class=" text-white pt-2 fa fa-facebook fa-2x"></a>
+                            <a href="#" class="text-white pt-2 fa fa-twitter fa-2x"></a>
+
+                            <a href="#" class="text-white pt-3 fa fa-instagram fa-2x"></a>
+                            <a href="#" class="text-white pt-3 fa fa-pinterest fa-2x"></a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </footer>
 
 {% endblock %}
 {% block javascript %}
