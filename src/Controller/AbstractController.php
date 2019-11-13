@@ -39,6 +39,5 @@ abstract class AbstractController
         );
         $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addExtension(new DebugExtension());
-
     }
 }

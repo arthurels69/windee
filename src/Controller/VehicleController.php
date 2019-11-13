@@ -3,9 +3,7 @@
 
 namespace App\Controller;
 
-
 use App\Model\VehicleManager;
-
 
 class VehicleController extends AbstractController
 {
@@ -24,5 +22,4 @@ class VehicleController extends AbstractController
             "button" => $button
         ]);
     }
-
 }
