@@ -35,23 +35,20 @@
                 <form action="/vehicle/{{ path }}/{{ currentvehicle.id }}" method="post">
                     <div class="form-group d-flex flex-column">
                         <label>Nom de vehicle</label>
-                        <input name="vehicle_name" value="{{ currentvehicle.vehicle_name }}">
+                        <input name="capacity" value="{{ currentvehicle.capacity }}" required pattern="[0-9]"  maxlength="1">
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Numero</label>
-                        <input name="number" value="{{ currentvehicle.number }}">
+                        <input name="registration" value="{{ currentvehicle.registration }}" required pattern="[0-9][A-B]" maxlength="7">
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Nom de la rue</label>
-                        <input name="street_name" value="{{ currentvehicle.street_name }}">
+                        <input name="technical_control" value="{{ currentvehicle.technical_control }}" required pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d
+">
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Code Postal</label>
-                        <input name="zipcode" value="{{ currentvehicle.zipcode }}">
-                    </div>
-                    <div class="form-group d-flex flex-column">
-                        <label>Ville</label>
-                        <input name="city" value="{{ currentvehicle.city }}">
+                        <input name="price" value="{{ currentvehicle.price }}" required pattern="[0-9]"  maxlength="3">
                     </div>
                     <button type="submit">{{ button }}</button>
                     <a href="/vehicle/delete/{{ currentvehicle.id }}">{{ buttonDelete }}<a>
