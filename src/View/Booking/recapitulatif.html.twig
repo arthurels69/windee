@@ -5,12 +5,12 @@
     <div class="mt-5 container col-6">
         <legend class="mb-4">Récapitulatif</legend>
 
-        <p>Depart: {{ arrayRecap.dep }}</p>
-        <p>Arrivée: {{ arrayRecap.arri }}</p>
-        <p>Capacité: {{ arrayRecap.capa }}</p>
-        <p>Date: {{ arrayRecap.date }}  </p>
-        <p>heure : {{ arrayRecap.heure }}</p>
-        <p>email : {{ arrayRecap.mail }}</p>
+        <p>Depart: {{ departureStation }}</p>
+        <p>Arrivée: {{ arrivalStation }}</p>
+        <p>Capacité: {{ user.capa }}</p>
+        <p>Date: {{ user.date }}  </p>
+        <p>heure : {{ user.heure }}</p>
+        <p>email : {{ user.email }}</p>
         <p>prix total : 275e</p>
 
 
@@ -24,7 +24,7 @@
                 <label class="control-label" for="card-holder-name">Nom du titulaire</label>
                 <div>
                     <input type="text" class="form-control"
-                           id="name-on-card" placeholder="{{ arrayRecap.nom ~ ' ' ~ arrayRecap.prenom }}">
+                           id="name-on-card" placeholder="{{ user.firstname ~ ' ' ~ user.lastname }}">
                 </div>
             </div>
             <div class="form-group">

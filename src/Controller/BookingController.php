@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Model\BookingManager;
 use App\Model\StationManager;
 use App\Model\VehiculeManager;
 
@@ -17,7 +18,7 @@ class BookingController extends AbstractController
         $listeStations = new StationManager();
         $listeStations = $listeStations->selectAll();
 
-        $tabDetails = ['stations' => $listeStations, 'vehicule' => $listeVehicule];
+        $tabDetails = ['stations' => $listeStations, 'vehicles' => $listeVehicule];
 
         return $this->twig->render('Booking/booking.html.twig', ['tabDetails' => $tabDetails]);
     }
@@ -58,20 +59,74 @@ class BookingController extends AbstractController
         $capacite = $_POST['capacite'];
         $date = $_POST['date'];
         $heure = $_POST['heure'];
-        $mail = $_POST['mail'];
-        $nom = $_POST['nom'];
-        $prenom = $_POST['prenom'];
-
+        $mail = $_POST['email'];
+        $nom = $_POST['lastname'];
+        $prenom = $_POST['firstname'];
+        $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $array = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $capacite, 'date' => $date, 'heure' => $heure];
         $array['mail']=$mail;
         $array['nom'] = $nom;
         $array['prenom'] = $prenom;
+        $array['passwordHash'] = $passwordHash;
 
-        return $this->twig->render('Booking/recapitulatif.html.twig', ['arrayRecap' => $array]);
+
+
+        $departureStationManager = new StationManager();
+        $departureStation = $departureStationManager->selectOneById((int)$_POST['capacite']);
+
+        return $this->twig->render('Booking/recapitulatif.html.twig', [
+            'arrayRecap' => $array,
+            'vehicle' => $vehicle
+        ]);
     }
 
     public function final()
     {
         return $this->twig->render('Booking/final.html.twig');
     }
+
+    public function recap()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $depart = (int)$_POST['depart'];
+            $arrivee = (int)$_POST['arrivee'];
+            $capacite = $_POST['capacite'];
+            $date = $_POST['date'];
+            $heure = $_POST['heure'];
+            $mail = $_POST['email'];
+            $address = $_POST['address'];
+            $country = $_POST['country'];
+            $nom = $_POST['lastname'];
+            $prenom = $_POST['firstname'];
+            $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $capacite, 'date' => $date, 'heure' => $heure];
+            $user['email']=$mail;
+            $user['address']=$address;
+            $user['country']=$country;
+            $user['lastname'] = $nom;
+            $user['firstname'] = $prenom;
+            $user['password'] = $passwordHash;
+            $booking = [
+                'depart' => $depart,
+                'arrivee' => $arrivee,
+            ];
+
+            $stationManager = new StationManager();
+            $departureStation = $stationManager->selectOneById($user['dep']);
+            $arrivalStation = $stationManager->selectOneById($user['arri']);
+
+            $vehicle = new VehiculeManager();
+            $vehicle->selectOneById((int)$_POST['capacite']);
+
+            $bookingManager = new bookingManager();
+            $id = $bookingManager->insertUser($user);
+            return $this->twig->render('Booking/recapitulatif.html.twig', [
+                'user' => $user,
+                'vehicle' => $vehicle,
+                'departureStation' => $departureStation['station_name'],
+                'arrivalStation' => $arrivalStation['station_name']
+            ]);
+        }
+    }
+
 }

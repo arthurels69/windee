@@ -7,6 +7,6 @@ class VehiculeManager extends AbstractManager
 {
     public function __construct()
     {
-        parent::__construct('vehicule');
+        parent::__construct('vehicle');
     }
 }

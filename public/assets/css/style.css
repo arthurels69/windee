@@ -49,7 +49,7 @@ form {
     margin: 30px auto;
 }
 
-form button {
+button {
     margin: 20px 0;
 }
 
@@ -60,6 +60,18 @@ form button {
     }
 
 }
+
+/* page history login */
+
+.user-login-form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.user-login-button {
+    text-align: center;
+}
+
 /*page final */
 .final{
     margin-top: 200px ;
