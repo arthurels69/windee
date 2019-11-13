@@ -9,6 +9,9 @@ class BackController extends AbstractController
 {
     public function index()
     {
+        if (!isset($_SESSION['user'])) {
+            header('location: /back/login');
+        }
         $stations = new StationManager();
         $stations = $stations->selectAll();
         $path = 'add';
@@ -22,7 +25,6 @@ class BackController extends AbstractController
 
     public function add()
     {
-
         $stations = new StationManager();
         $newStation = [
             'station_name' => $_POST['station_name'],
@@ -44,7 +46,6 @@ class BackController extends AbstractController
         $stations = $stations->selectAll();
         $station = new StationManager();
         $station = $station->selectOneById($id);
-        var_dump($station);
         return $this->twig->render("Back/index.html.twig", [
             "currentStation" => $station,
             "stations" => $stations,
@@ -72,5 +73,25 @@ class BackController extends AbstractController
         $station = new StationManager();
         $station = $station->delete($id);
         header("location:/Back/index");
+    }
+
+    public function login()
+    {
+        return $this->twig->render("Back/login.html.twig");
+    }
+
+    public function check()
+    {
+        if ($_POST['username'] === 'admin'&& $_POST['password'] === 'password') {
+            $_SESSION['user'] = $_POST['username'];
+            header('location: /back/index');
+        } else {
+            header('location: /back/login');
+        }
+    }
+    public function logout()
+    {
+        session_destroy();
+        header("location: /back/login/");
     }
 }

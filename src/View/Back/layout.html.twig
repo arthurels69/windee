@@ -30,7 +30,7 @@
 <body>
 {% block nav %}
     <nav class="textenav navbar navbar-dark navbar-expand-lg " style="background: cornflowerblue">
-        <a class="navbar-brand text-white" href="/home/index">Windee</a>
+        <a class="navbar-brand text-white" href="/back/index">Windee</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,8 +41,13 @@
                     <a class="nav-link text-white" href="/back/index">Stations</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/back/booking">Réservation</a>
-
+                    <a class="nav-link text-white" href="/back/index">Réservation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/vehicle/vehicle">Véhicule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/back/logout">{% if session.user is defined %}Déconnexion{% endif %}</a>
                 </li>
 
             </ul>
@@ -54,67 +59,15 @@
 {% block content %}
 {% endblock %}
 {% block footer %}
-
     <footer class="page-footer font-small blue py-4 mt-4">
 
         <!-- Footer Links -->
-        <div class="footer-a container text-center text-md-left">
-            <!-- Grid row -->
-            <div class="row">
-                <!-- Grid column -->
-                <div class="col-md-3  mt-md-0 mt-3">
-                    <!-- Content -->
-                    <h5 >Nous trouver</h5>
-                    <br>
-                    <p>Conception: 17 rue Delandine 69002 Lyon</p>
-                    <p>Bureau : 20 avenue de la Répubique 69002 Lyon</p>
-                </div>
-                <!-- Grid column -->
-                <hr class="clearfix w-100 d-md-none pb-3">
-                <div class="col-md-3 mb-md-0 mb-3">
-                </div>
-                <!-- Grid column -->
-                <div class=" col-md-3 mb-md-0 mb-3">
-                    <!-- Links -->
-                    <h5>Informations</h5>
-                    <br>
-                    <ul class=" list-unstyled">
-                        <li>
-                            <a class="text-white" href="/Home/index">Accueil</a>
-                        </li>
-                        <li>
-                            <a class="text-white" href="/Booking/booking">Reservation</a>
-                        </li>
-                        <li>
-                            <a class="text-white" href="/Concept/index">Concept</a>
-                        </li>
-                        <li>
-                            <a class="text-white" href="https://www.wildcodeschool.com/fr-FR">Lien WildCodeSchool</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-                    <!-- Links -->
-                    <h5>Nous suivre</h5>
-                    <br>
-                    <ul class="footer-social list-unstyled">
-                        <li>
-                            <a href="#" class=" text-white pt-2 fa fa-facebook fa-2x"></a>
-                            <a href="#" class="text-white pt-2 fa fa-twitter fa-2x"></a>
-
-                            <a href="#" class="text-white pt-3 fa fa-instagram fa-2x"></a>
-                            <a href="#" class="text-white pt-3 fa fa-pinterest fa-2x"></a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
+        <div class="footer-a container text-center ">
+          <a class="text-white" href="/home/index">Lien vers Windee</a>
         </div>
     </footer>
+
+
 
 {% endblock %}
 {% block javascript %}

@@ -1,0 +1,65 @@
+{% extends "./Back/layout.html.twig" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-5 justify-content-center">
+            <div class=" col-md-5 col-sm-8 center-block ">
+                <h2>Véhicules</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Capacité</th>
+                        <th scope="col">Immatriculation</th>
+                        <th scope="col"> Contrôle Technique</th>
+                        <th scope="col">Prix</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for vehicle in vehicles %}
+                        <tr>
+                            <th scope="row">{{ vehicle.id }}</th>
+                            <td>{{ vehicle.capacity }}</td>
+                            <td>{{ vehicle.registration }} </td>
+                            <td>{{ vehicle.technical_control }}</td>
+                            <td>{{ vehicle.price }}</td>
+                            <td><a href="/vehicle/edit/{{ vehicle.id }}">editer</a></td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-5 center-block">
+                <h2>Ajout de vehicules</h2>
+                <form action="/vehicle/{{ path }}/{{ currentvehicle.id }}" method="post">
+                    <div class="form-group d-flex flex-column">
+                        <label>Nom de vehicle</label>
+                        <input name="vehicle_name" value="{{ currentvehicle.vehicle_name }}">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Numero</label>
+                        <input name="number" value="{{ currentvehicle.number }}">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Nom de la rue</label>
+                        <input name="street_name" value="{{ currentvehicle.street_name }}">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Code Postal</label>
+                        <input name="zipcode" value="{{ currentvehicle.zipcode }}">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Ville</label>
+                        <input name="city" value="{{ currentvehicle.city }}">
+                    </div>
+                    <button type="submit">{{ button }}</button>
+                    <a href="/vehicle/delete/{{ currentvehicle.id }}">{{ buttonDelete }}<a>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

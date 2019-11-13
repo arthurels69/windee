@@ -1,59 +1,67 @@
 {% extends 'Back/layout.html.twig' %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row mt-5 justify-content-center">
-        <div class=" col-md-5 col-sm-8 center-block justify-content-center">
-            <h2>Les stations</h2>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Station</th>
-                    <th scope="col">Adresse</th>
-                    <th scope="col">Ville</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for station in stations %}
-                <tr>
-                    <th scope="row">{{ station.id }}</th>
-                    <td>{{ station.station_name }}</td>
-                    <td>{{ station.number }} {{ station.street_name }}</td>
-                    <td>{{ station.city }}</td>
-                    <td><a href="/back/edit/{{ station.id }}">editer</a></td>
-                </tr>
-                {% endfor %}
+    <h2>Bonjour {{ session.user }}</h2>
 
-                </tbody>
-            </table>
-        </div>
-        <div class="col-4">
-            <h2>Ajout de Stations</h2>
-            <form action="/back/{{path}}/{{ currentStation.id }}" method="post">
-                <label>Nom de Station</label>
-                <input name="station_name" value="{{ currentStation.station_name }}">
+    <div class="container-fluid">
+        <div class="row mt-5 justify-content-center">
+            <div class=" col-md-5 col-sm-8 center-block ">
+                <h2>Les stations</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Station</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Ville</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for station in stations %}
+                        <tr>
+                            <th scope="row">{{ station.id }}</th>
+                            <td>{{ station.station_name }}</td>
+                            <td>{{ station.number }} {{ station.street_name }}</td>
+                            <td>{{ station.city }}</td>
+                            <td><a href="/back/edit/{{ station.id }}">editer</a></td>
+                        </tr>
+                    {% endfor %}
 
-                <label>Numero</label>
-                <input name="number" value="{{ currentStation.number }}">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-5 center-block">
+                <h2>{% if currentStation.id is defined %}Édition Station {% else %}Ajout de Stations{% endif %}</h2>
+                <form action="/back/{{ path }}/{{ currentStation.id }}" method="post">
+                    <div class="form-group d-flex flex-column">
+                        <label>Nom de Station</label>
+                        <input name="station_name" value="{{ currentStation.station_name }}" required maxlength="45" pattern="[A-Z][A-Za-z' -]+">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Numero Rue</label>
+                        <input name="number" value="{{ currentStation.number }}" required pattern="[0-9]  maxlength="2">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Nom de la rue</label>
+                        <input name="street_name" value="{{ currentStation.street_name }}" required maxlength="45" pattern="[A-Z][A-Za-z' -]+">
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Code Postal</label>
+                        <input name="zipcode" value="{{ currentStation.zipcode }}" required pattern="[0-9]"  maxlength="5" >
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label>Ville</label>
+                        <input name="city" value="{{ currentStation.city }}" required maxlength="45" pattern="[A-Z][A-Za-z' -]+ ">
+                    </div>
+                    <button type="submit">{{ button }}</button>
+                    <a onclick="return(confirm('Etes-vous sûr de vouloir supprimer ?'));" href="/back/delete/{{ currentStation.id }}">{{ buttonDelete }}</a>
+                </form>
 
-                <label>Nom de la rue</label>
-                <input name="street_name" value="{{ currentStation.street_name }}">
-
-                <label>Code Postal</label>
-                <input name="zipcode" value="{{ currentStation.zipcode }}">
-
-                <label>Ville</label>
-                <input name="city" value="{{ currentStation.city }}">
-                <button type="submit">{{ button }}</button>
-                <a href="/back/delete/{{ currentStation.id }}">{{ buttonDelete }}<a >
-            </form>
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 
 
