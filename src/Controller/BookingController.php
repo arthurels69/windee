@@ -52,34 +52,6 @@ class BookingController extends AbstractController
         return $this->twig->render('Booking/bookingRempli.html.twig', ['arrayStation' => $arrayStation]);
     }
 
-    public function recapitulatif()
-    {
-        $depart = $_POST['depart'];
-        $arrivee = $_POST['arrivee'];
-        $capacite = $_POST['capacite'];
-        $date = $_POST['date'];
-        $heure = $_POST['heure'];
-        $mail = $_POST['email'];
-        $nom = $_POST['lastname'];
-        $prenom = $_POST['firstname'];
-        $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $array = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $capacite, 'date' => $date, 'heure' => $heure];
-        $array['mail']=$mail;
-        $array['nom'] = $nom;
-        $array['prenom'] = $prenom;
-        $array['passwordHash'] = $passwordHash;
-
-
-
-        $departureStationManager = new StationManager();
-        $departureStation = $departureStationManager->selectOneById((int)$_POST['capacite']);
-
-        return $this->twig->render('Booking/recapitulatif.html.twig', [
-            'arrayRecap' => $array,
-            'vehicle' => $vehicle
-        ]);
-    }
-
     public function final()
     {
         return $this->twig->render('Booking/final.html.twig');
@@ -106,10 +78,6 @@ class BookingController extends AbstractController
             $user['lastname'] = $nom;
             $user['firstname'] = $prenom;
             $user['password'] = $passwordHash;
-            $booking = [
-                'depart' => $depart,
-                'arrivee' => $arrivee,
-            ];
 
             $stationManager = new StationManager();
             $departureStation = $stationManager->selectOneById($user['dep']);
@@ -119,7 +87,7 @@ class BookingController extends AbstractController
             $vehicle->selectOneById((int)$_POST['capacite']);
 
             $bookingManager = new bookingManager();
-            $id = $bookingManager->insertUser($user);
+            $bookingManager->insertUser($user);
             return $this->twig->render('Booking/recapitulatif.html.twig', [
                 'user' => $user,
                 'vehicle' => $vehicle,
@@ -128,5 +96,4 @@ class BookingController extends AbstractController
             ]);
         }
     }
-
 }

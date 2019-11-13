@@ -25,7 +25,6 @@ class BookingManager extends AbstractManager
         if ($statement->execute()) {
             return (int)$this->pdo->lastInsertId();
         }
-
     }
 
     public function insertTest(): int
