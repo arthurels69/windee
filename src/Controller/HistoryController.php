@@ -18,15 +18,15 @@ class HistoryController extends AbstractController
 
             if ($email === 'sofianesk8@hotmail.com' &&
                 $passwordHash === crypt('password', "salt")) {
-                $customerManager = new CustomerManager();
-                $customer = $customerManager->selectOneByEmail($email);
+/*                $customerManager = new CustomerManager();
+                $customer = $customerManager->selectOneByEmail($email);*/
                 $bookingManager = new BookingManager();
-                $booking = $bookingManager->selectOneById($customer['id']);
-                var_dump($customer);
-                var_dump($booking);
+                $bookings = $bookingManager->selectManyByEmail($email);
+/*                var_dump($customer);
+                var_dump($booking);*/
 
                 return $this->twig->render('History/index.html.twig', [
-                    'booking' => $booking
+                    'bookings' => $bookings
                 ]);
             }
         }

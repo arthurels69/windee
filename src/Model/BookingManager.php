@@ -44,4 +44,25 @@ class BookingManager extends AbstractManager
             return (int)$this->pdo->lastInsertId();
         }
     }
+
+    public function selectManyByEmail(string $email)
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("
+            SELECT c.firstname, c.lastname, c.email,
+                   v.capacity,
+                   sd.station_name departure_station,
+                   sa.station_name arrival_station
+            FROM $this->table b
+            JOIN vehicle v ON b.vehicle_id = v.id
+            JOIN station sd ON b.departure_station_id = sd.id
+            JOIN station sa ON b.arrival_station_id = sa.id
+            JOIN customer c ON b.customer_id = c.id
+            WHERE c.email=:email
+            ");
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
