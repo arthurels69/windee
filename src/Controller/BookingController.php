@@ -64,14 +64,14 @@ class BookingController extends AbstractController
             $arrivee = (int)$_POST['arrivee'];
             $vehicle = (int)$_POST['capacite'];
             $date = $_POST['date'];
-            $heure = $_POST['heure'];
+            $hour = $_POST['hour'];
             $mail = $_POST['email'];
             $address = $_POST['address'];
             $country = $_POST['country'];
             $nom = $_POST['lastname'];
             $prenom = $_POST['firstname'];
             $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $vehicle, 'date' => $date, 'heure' => $heure];
+            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $vehicle, 'date' => $date];
             $user['email']=$mail;
             $user['address']=$address;
             $user['country']=$country;
@@ -87,6 +87,7 @@ class BookingController extends AbstractController
 
             $booking = [
                 'date' => $date,
+                'hour' => $hour,
                 'vehicle_id' => $vehicle['id'],
                 'departure_station_id' => $departureStation['id'],
                 'arrival_station_id' => $arrivalStation['id'],
@@ -113,14 +114,14 @@ class BookingController extends AbstractController
             $arrivee = (int)$_POST['arrivee'];
             $capacite = $_POST['capacite'];
             $date = $_POST['date'];
-            $heure = $_POST['heure'];
+            $hour = $_POST['hour'];
             $mail = $_POST['email'];
             $address = $_POST['address'];
             $country = $_POST['country'];
             $nom = $_POST['lastname'];
             $prenom = $_POST['firstname'];
             $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $capacite, 'date' => $date, 'heure' => $heure];
+            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $capacite, 'date' => $date, 'hour' => $hour];
             $user['email']=$mail;
             $user['address']=$address;
             $user['country']=$country;

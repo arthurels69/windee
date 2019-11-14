@@ -13,22 +13,22 @@ class HistoryController extends AbstractController
     {
         if (isset($_POST['email']) && isset($_POST['password'])) {
             $email = htmlspecialchars(trim($_POST['email']));
-            $password = $_POST['password'];
-            $passwordHash = crypt($password, "salt");
+//            $password = $_POST['password'];
+//            $passwordHash = crypt($password, "salt");
 
-            if ($email === 'sofianesk8@hotmail.com' &&
-                $passwordHash === crypt('password', "salt")) {
+/*          if ($email === 'sofianesk8@hotmail.com' &&
+            $passwordHash === crypt('password', "salt")) {*/
 /*                $customerManager = new CustomerManager();
-                $customer = $customerManager->selectOneByEmail($email);*/
-                $bookingManager = new BookingManager();
-                $bookings = $bookingManager->selectManyByEmail($email);
+            $customer = $customerManager->selectOneByEmail($email);*/
+            $bookingManager = new BookingManager();
+            $bookings = $bookingManager->selectManyByEmail($email);
 /*                var_dump($customer);
-                var_dump($booking);*/
+            var_dump($booking);*/
 
-                return $this->twig->render('History/index.html.twig', [
-                    'bookings' => $bookings
-                ]);
-            }
+            return $this->twig->render('History/index.html.twig', [
+                'bookings' => $bookings
+            ]);
+//            }
         }
         return $this->twig->render('History/login.html.twig');
     }

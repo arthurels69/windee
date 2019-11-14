@@ -31,10 +31,12 @@ class BookingManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("
-            INSERT INTO `booking` (`date`, `vehicle_id`, `departure_station_id`, `arrival_station_id`, `customer_id`)
-            VALUES (:date, :vehicle_id, :departure_station_id, :arrival_station_id, :customer_id)
+            INSERT INTO `booking` (`date`, `hour`, `vehicle_id`, `departure_station_id`,
+                                   `arrival_station_id`, `customer_id`)
+            VALUES (:date, :hour, :vehicle_id, :departure_station_id, :arrival_station_id, :customer_id)
             ");
         $statement->bindValue('date', $booking['date'], \PDO::PARAM_STR);
+        $statement->bindValue('hour', $booking['hour'], \PDO::PARAM_STR);
         $statement->bindValue('vehicle_id', $booking['vehicle_id'], \PDO::PARAM_INT);
         $statement->bindValue('departure_station_id', $booking['departure_station_id'], \PDO::PARAM_INT);
         $statement->bindValue('arrival_station_id', $booking['arrival_station_id'], \PDO::PARAM_INT);
@@ -49,7 +51,8 @@ class BookingManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("
-            SELECT c.firstname, c.lastname, c.email,
+            SELECT b.date, b.hour,
+                   c.firstname, c.lastname, c.email,
                    v.capacity,
                    sd.station_name departure_station,
                    sa.station_name arrival_station
