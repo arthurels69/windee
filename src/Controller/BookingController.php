@@ -92,16 +92,14 @@ class BookingController extends AbstractController
                 'arrival_station_id' => $arrivalStation['id'],
             ];
 
-            var_dump($booking);
             $bookingManager = new bookingManager();
             $customerId = $bookingManager->insertUser($user);
-            var_dump($customerId);
 
             $bookingManager->insertBooking($booking, $customerId);
 
             return $this->twig->render('Booking/recapitulatif.html.twig', [
                 'user' => $user,
-                'vehicle_id' => $vehicle,
+                'vehicle' => $vehicle,
                 'departureStation' => $departureStation['station_name'],
                 'arrivalStation' => $arrivalStation['station_name']
             ]);
