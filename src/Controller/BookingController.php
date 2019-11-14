@@ -62,6 +62,57 @@ class BookingController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $depart = (int)$_POST['depart'];
             $arrivee = (int)$_POST['arrivee'];
+            $vehicle = (int)$_POST['capacite'];
+            $date = $_POST['date'];
+            $heure = $_POST['heure'];
+            $mail = $_POST['email'];
+            $address = $_POST['address'];
+            $country = $_POST['country'];
+            $nom = $_POST['lastname'];
+            $prenom = $_POST['firstname'];
+            $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $vehicle, 'date' => $date, 'heure' => $heure];
+            $user['email']=$mail;
+            $user['address']=$address;
+            $user['country']=$country;
+            $user['lastname'] = $nom;
+            $user['firstname'] = $prenom;
+            $user['password'] = $passwordHash;
+            $vehicleManager = new VehiculeManager();
+            $vehicle = $vehicleManager->selectOneById((int)$_POST['capacite']);
+
+            $stationManager = new StationManager();
+            $departureStation = $stationManager->selectOneById($user['dep']);
+            $arrivalStation = $stationManager->selectOneById($user['arri']);
+
+            $booking = [
+                'date' => $date,
+                'vehicle_id' => $vehicle['id'],
+                'departure_station_id' => $departureStation['id'],
+                'arrival_station_id' => $arrivalStation['id'],
+            ];
+
+            var_dump($booking);
+            $bookingManager = new bookingManager();
+            $customerId = $bookingManager->insertUser($user);
+            var_dump($customerId);
+
+            $bookingManager->insertBooking($booking, $customerId);
+
+            return $this->twig->render('Booking/recapitulatif.html.twig', [
+                'user' => $user,
+                'vehicle_id' => $vehicle,
+                'departureStation' => $departureStation['station_name'],
+                'arrivalStation' => $arrivalStation['station_name']
+            ]);
+        }
+    }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $depart = (int)$_POST['depart'];
+            $arrivee = (int)$_POST['arrivee'];
             $capacite = $_POST['capacite'];
             $date = $_POST['date'];
             $heure = $_POST['heure'];
