@@ -44,18 +44,18 @@ h2 {
     margin: 50px 0;
 }
 
-.booking-form form {
+form {
     width: 80%;
     margin: 30px auto;
 }
 
-.booking-form button {
+button {
     margin: 20px 0;
 }
 
 @media screen and (min-width: 768px) {
 
-    .booking-form form {
+    form {
         width: 50%;
     }
 
