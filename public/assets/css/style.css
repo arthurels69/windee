@@ -31,12 +31,32 @@
 }
 
 /* style homepage */
-
+.container-fluid{
+    padding: 0;
+}
 .banniere{
     padding: 0;
 
 }
 
+.row_banniere img{
+    width: 100%;
+
+}
+.textConcept{
+    color: white;
+    position: absolute;
+
+    top: 550px;
+    right: 50px;
+    opacity: 2;
+    width: 25%;
+    text-align: justify;
+    margin-left: 5%;
+}
+iframe{
+    margin-top: 30px;
+}
 /*style booking */
 
 h2 {
@@ -49,9 +69,78 @@ form {
     margin: 30px auto;
 }
 
-form button {
+button {
     margin: 20px 0;
 }
+
+.row p{
+    text-align: justify;
+}
+
+.trajet_left{
+    margin-bottom: 40px;
+}
+.img_left{
+    border-radius: 50%;
+}
+.img_left img:last-child{
+    display: none;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+.img_left:hover img:first-child{
+    display: none;
+}
+.img_left:hover img:last-child{
+    display: block;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.img_center{
+    border-radius: 50%;
+}
+.img_center img:last-child{
+    display: none;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.img_center:hover img:first-child{
+    display: none;
+
+}
+.img_center:hover img:last-child{
+    display: block;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.img_right{
+    border-radius: 50%;
+}
+.img_right img:last-child{
+    display: none;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+
+}
+.img_right:hover img:first-child{
+    display: none;
+
+}
+.img_right:hover img:last-child{
+    display: block;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+
+}
+
 
 @media screen and (min-width: 768px) {
 
@@ -60,6 +149,18 @@ form button {
     }
 
 }
+
+/* page history login */
+
+.user-login-form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.user-login-button {
+    text-align: center;
+}
+
 /*page final */
 .final{
     margin-top: 200px ;

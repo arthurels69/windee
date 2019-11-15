@@ -8,24 +8,27 @@
 {% block content %}
     <h2>Réservation</h2>
     <div class="form">
-        <form action="/booking/recapitulatif" method="post">
+        <form action="/booking/recap" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="departureStation">Station de départ</label>
-                    <input name='depart' type="text" class="form-control" id="inputFirstname" readonly value="{{ arrayStation.stationD.station_name }} {{ arrayStation.depart }}">
+                    <input  type="text" class="form-control"  readonly value="{{ arrayStation.stationD.station_name }}">
+                    <input name="depart" type="hidden" value="{{ arrayStation.stationD.id }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="arrivalStation">Station d'arrivée</label>
-                    <input name="arrivee" type="text" class="form-control" id="inputFirstname" readonly value="{{ arrayStation.stationA.station_name }} {{ arrayStation.arrivee }}">
+                    <input  type="text" class="form-control"  readonly value="{{ arrayStation.stationA.station_name }} ">
+                    <input name="arrivee" type="hidden" value="{{ arrayStation.stationA.id }}">
                 </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
-                    <select id="VehiculeCapacite" class="form-control" required name="capacite">
+                    <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
                         <option selected>Sélectionnez...</option>
-                        {% for vehicule in arrayStation.vehicule %}
-                            <option>{{ vehicule.capacite }}</option>
+                        {% for vehicle in arrayStation.vehicle %}
+                            <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
 
                         {% endfor %}
                     </select>
@@ -36,18 +39,18 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputHeure">Heure</label>
-                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="heure" required>
+                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="hour" >
                 </div>
 
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="inputFirstname">Prénom</label>
-                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="prenom" required>
+                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="firstname" required maxlength="45" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-5">
                     <label for="inputLastname">Nom</label>
-                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom"  name="nom" required>
+                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom"  name="lastname" required maxlength="45" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputAge">Age</label>
@@ -58,28 +61,33 @@
 
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="mail" required>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" required maxlength="45">
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="*****" name="password" required maxlength="20" minlength="5">
             </div>
 
             <div class="form-group">
                 <label for="inputAddress">Adresse</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine" required>
+                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine" name="address" required maxlength="45" minlength="5">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Ville</label>
-                    <input type="text" class="form-control" id="inputCity" required>
+                    <input type="text" class="form-control" id="inputCity" required maxlength="20" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pays</label>
-                    <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control" name="country" required >
                         <option selected>France</option>
                         <option>Autre</option>
                     </select>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Code postal</label>
-                    <input type="text" class="form-control" id="inputZip" required>
+                    <input type="number" class="form-control" id="inputZip" required maxlength="5" >
                 </div>
             </div>
             <div class="form-group">
@@ -95,4 +103,4 @@
     </div>
 {% endblock %}
 
-{% block javascript %}{% endblock %}
+
