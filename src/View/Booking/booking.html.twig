@@ -6,16 +6,16 @@
 
 
 {% block content %}
-    <h2>Réservation</h2>
-    <div class="form">
-        <form action="/booking/recapitulatif" method="post">
+    <h2 class="booking-title">Réservation</h2>
+    <div class="form booking-form">
+        <form action="/booking/recap" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="departureStation">Station de départ</label>
-                    <select name="depart" id="departureStation" class="form-control"  required>
+                    <select name="depart" id="departureStation" class="form-control" required>
                         <option selected>Sélectionnez...</option>
                         {% for station in tabDetails.stations %}
-                            <option>{{ station.station_name }}</option>
+                            <option value="{{ station.id }}">{{ station.station_name }}</option>
 
                         {% endfor %}
                     </select>
@@ -25,7 +25,7 @@
                     <select id="arrivalStation" class="form-control" name="arrivee" required>
                         <option selected>Sélectionnez...</option>
                         {% for station in tabDetails.stations %}
-                            <option>{{ station.station_name }}</option>
+                            <option value="{{ station.id }}">{{ station.station_name }}</option>
 
                         {% endfor %}
                     </select>
@@ -36,8 +36,8 @@
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
                     <select id="VehiculeCapacite" class="form-control" required name="capacite">
                         <option selected>Sélectionnez...</option>
-                        {% for vehicule in tabDetails.vehicule %}
-                            <option>{{ vehicule.capacite }}</option>
+                        {% for vehicle in tabDetails.vehicles %}
+                            <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
 
                         {% endfor %}
                     </select>
@@ -48,18 +48,18 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputHeure">Heure</label>
-                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="heure" required>
+                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="hour" required>
                 </div>
 
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="inputFirstname">Prénom</label>
-                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="prenom" required>
+                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="firstname" required>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="inputLastname">Nom</label>
-                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom"  name="nom" required>
+                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom"  name="lastname" required>
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputAge">Age</label>
@@ -70,12 +70,17 @@
 
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="mail" required>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="*****" name="password" required>
             </div>
 
             <div class="form-group">
                 <label for="inputAddress">Adresse</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine" required>
+                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine" name="address" required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -84,7 +89,7 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pays</label>
-                    <select id="inputState" class="form-control">
+                    <select id="inputState" class="form-control" name="country">
                         <option selected>France</option>
                         <option>Autre</option>
                     </select>
