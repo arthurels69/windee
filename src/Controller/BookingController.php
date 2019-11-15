@@ -47,7 +47,7 @@ class BookingController extends AbstractController
         }
 
         $arrayStation = ['stationD' => $stationD, 'stationA' => $stationA, 'depart' => $depart, 'arrivee' => $arrivee];
-        $arrayStation['vehicule'] = $listeVehicule;
+        $arrayStation['vehicle'] = $listeVehicule;
 
         return $this->twig->render('Booking/bookingRempli.html.twig', ['arrayStation' => $arrayStation]);
     }
@@ -105,7 +105,7 @@ class BookingController extends AbstractController
             $bookingManager = new bookingManager();
             $customerId = $bookingManager->insertUser($user);
             $bookingManager->insertBooking($booking, $customerId);
-            return $this->twig->render('Booking/recapitulatif.html.twig', [
+            return $this->twig->render('Booking/recap.twig', [
                 'user' => $user,
                 'vehicle' => $vehicle,
                 'departureStation' => $departureStation['station_name'],
@@ -145,7 +145,7 @@ class BookingController extends AbstractController
 
             $bookingManager = new bookingManager();
             $bookingManager->insertUser($user);
-            return $this->twig->render('Booking/recapitulatif.html.twig', [
+            return $this->twig->render('Booking/recap.twig', [
                 'user' => $user,
                 'vehicle' => $vehicle,
                 'departureStation' => $departureStation['station_name'],

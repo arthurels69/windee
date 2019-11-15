@@ -6,9 +6,11 @@
 
 
 {% block content %}
+    {% if error is defined  %}
     <div class="alert alert-danger text-center">
     {{ error }}
-</div>
+    </div>
+    {% endif %}
     <h2 class="booking-title">Réservation</h2>
 
     <div class="form booking-form">

@@ -8,7 +8,7 @@
 {% block content %}
     <h2>Réservation</h2>
     <div class="form">
-        <form action="/booking/recapitulatif" method="post">
+        <form action="/booking/recap" method="post">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="departureStation">Station de départ</label>
@@ -25,7 +25,7 @@
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
                     <select id="VehiculeCapacite" class="form-control" required name="capacite">
                         <option selected>Sélectionnez...</option>
-                        {% for vehicle in tabDetails.vehicles %}
+                        {% for vehicle in arrayStation.vehicle %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
 
                         {% endfor %}
