@@ -5,14 +5,14 @@ namespace App\Controller;
 
 use App\Model\BookingManager;
 use App\Model\StationManager;
-use App\Model\VehiculeManager;
+use App\Model\VehicleManager;
 
 class BookingController extends AbstractController
 {
 
     public function booking()
     {
-        $listeVehicule = new VehiculeManager();
+        $listeVehicule = new VehicleManager();
         $listeVehicule = $listeVehicule->selectAll();
 
         $listeStations = new StationManager();
@@ -29,7 +29,7 @@ class BookingController extends AbstractController
         $stationA = "";
         $depart = "";
         $arrivee = "";
-        $listeVehicule = new VehiculeManager();
+        $listeVehicule = new VehicleManager();
         $listeVehicule = $listeVehicule->selectAll();
         if (isset($_POST['id'])) {
             $stations = $_POST['id'];
@@ -78,7 +78,7 @@ class BookingController extends AbstractController
             $user['lastname'] = $nom;
             $user['firstname'] = $prenom;
             $user['password'] = $passwordHash;
-            $vehicleManager = new VehiculeManager();
+            $vehicleManager = new VehicleManager();
             $vehicle = $vehicleManager->selectOneById((int)$_POST['capacite']);
 
             $stationManager = new StationManager();
@@ -133,7 +133,7 @@ class BookingController extends AbstractController
             $departureStation = $stationManager->selectOneById($user['dep']);
             $arrivalStation = $stationManager->selectOneById($user['arri']);
 
-            $vehicle = new VehiculeManager();
+            $vehicle = new VehicleManager();
             $vehicle->selectOneById((int)$_POST['capacite']);
 
             $bookingManager = new bookingManager();
