@@ -40,7 +40,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
-                    <select id="VehiculeCapacite" class="form-control" required name="capacite">
+                    <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
                         <option selected>Sélectionnez...</option>
                         {% for vehicle in tabDetails.vehicles %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>

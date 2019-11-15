@@ -12,18 +12,20 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="departureStation">Station de départ</label>
-                    <input name='depart' type="text" class="form-control" id="inputFirstname" readonly value="{{ arrayStation.stationD.station_name }} {{ arrayStation.depart }}">
+                    <input  type="text" class="form-control"  readonly value="{{ arrayStation.stationD.station_name }}">
+                    <input name="depart" type="hidden" value="{{ arrayStation.stationD.id }}">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="arrivalStation">Station d'arrivée</label>
-                    <input name="arrivee" type="text" class="form-control" id="inputFirstname" readonly value="{{ arrayStation.stationA.station_name }} {{ arrayStation.arrivee }}">
+                    <input  type="text" class="form-control"  readonly value="{{ arrayStation.stationA.station_name }} ">
+                    <input name="arrivee" type="hidden" value="{{ arrayStation.stationA.id }}">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
-                    <select id="VehiculeCapacite" class="form-control" required name="capacite">
+                    <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
                         <option selected>Sélectionnez...</option>
                         {% for vehicle in arrayStation.vehicle %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
@@ -37,7 +39,7 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputHeure">Heure</label>
-                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="hour" required>
+                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="hour" >
                 </div>
 
             </div>
