@@ -39,12 +39,12 @@
 
 /*style booking */
 
-.booking-form {
+h2 {
     text-align: center;
     margin: 50px 0;
 }
 
-.booking-form {
+.booking-form form {
     width: 80%;
     margin: 30px auto;
 }
