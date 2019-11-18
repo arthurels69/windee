@@ -39,13 +39,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-<<<<<<< HEAD
+
                     <label for="inputDate">Capacité Vehicule</label>
                     <select id="VehiculeCapacite" class="form-control" required name="capacite">
-=======
-                    <label for="inputDate">Capacité Vehicule Souhaité</label>
-                    <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
->>>>>>> dev
+
                         <option selected>Sélectionnez...</option>
                         {% for vehicle in tabDetails.vehicles %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
