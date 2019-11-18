@@ -71,7 +71,7 @@ class BookingController extends AbstractController
             $nom = $_POST['lastname'];
             $prenom = $_POST['firstname'];
             $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $vehicle, 'date' => $date];
+            $user = ['dep' => $depart, 'arri' => $arrivee, 'capa' => $vehicle, 'date' => $date, 'hour' => $hour];
             $user['email']=$mail;
             $user['address']=$address;
             $user['country']=$country;
