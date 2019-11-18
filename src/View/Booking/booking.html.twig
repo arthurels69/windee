@@ -39,8 +39,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="inputDate">Capacité Vehicule Souhaité</label>
-                    <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
+
+                    <label for="inputDate">Capacité Vehicule</label>
+                    <select id="VehiculeCapacite" class="form-control" required name="capacite">
+
                         <option selected>Sélectionnez...</option>
                         {% for vehicle in tabDetails.vehicles %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
@@ -48,11 +50,11 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
                     <label for="inputDate">Date</label>
-                    <input type="date" class="form-control" id="inputFirstname" value="2019-11-08" placeholder="Date" name="date" required>
+                    <input type="date" class="form-control" id="inputFirstname" value="{{ 'now'|date('d/m/Y') }}" placeholder="Date" name="date" required>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3">
                     <label for="inputHeure">Heure</label>
                     <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="hour" required>
                 </div>
