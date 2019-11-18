@@ -27,8 +27,6 @@ class BookingController extends AbstractController
     {
         $stationD = "";
         $stationA = "";
-        $depart = "";
-        $arrivee = "";
         $listeVehicule = new VehicleManager();
         $listeVehicule = $listeVehicule->selectAll();
         if (isset($_POST['id'])) {
@@ -40,15 +38,15 @@ class BookingController extends AbstractController
             $stationA = $stationA->selectOneById(intval($stations[1]));
         }
         if (isset($_POST['depart'])) {
-            $depart = $_POST ['depart'];
+            $stationD = new StationManager();
+            $stationD=$stationD->selectOneById($_POST['depart']);
         }
         if (isset($_POST['depart'])) {
-            $arrivee = $_POST['arrivee'];
+            $stationA = new StationManager();
+            $stationA=$stationA->selectOneById($_POST['arrivee']);
         }
-
-        $arrayStation = ['stationD' => $stationD, 'stationA' => $stationA, 'depart' => $depart, 'arrivee' => $arrivee];
-        $arrayStation['vehicule'] = $listeVehicule;
-
+        $arrayStation = ['stationD' => $stationD, 'stationA' => $stationA];
+        $arrayStation['vehicle'] = $listeVehicule;
         return $this->twig->render('Booking/bookingRempli.html.twig', ['arrayStation' => $arrayStation]);
     }
 
@@ -62,6 +60,20 @@ class BookingController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $depart = (int)$_POST['depart'];
             $arrivee = (int)$_POST['arrivee'];
+            $error='Merci de selectionner deux stations différentes';
+            if ($depart === $arrivee) {
+                var_dump($depart);
+                var_dump($arrivee);
+                $listeVehicule = new VehicleManager();
+                $listeVehicule = $listeVehicule->selectAll();
+                $listeStations = new StationManager();
+                $listeStations = $listeStations->selectAll();
+                $tabDetails = ['stations' => $listeStations, 'vehicles' => $listeVehicule];
+                return $this->twig->render('Booking/booking.html.twig', [
+                    'error'=>$error,
+                    'tabDetails' => $tabDetails
+                ]);
+            }
             $vehicle = (int)$_POST['capacite'];
             $date = $_POST['date'];
             $hour = $_POST['hour'];
@@ -80,11 +92,9 @@ class BookingController extends AbstractController
             $user['password'] = $passwordHash;
             $vehicleManager = new VehicleManager();
             $vehicle = $vehicleManager->selectOneById((int)$_POST['capacite']);
-
             $stationManager = new StationManager();
             $departureStation = $stationManager->selectOneById($user['dep']);
             $arrivalStation = $stationManager->selectOneById($user['arri']);
-
             $booking = [
                 'date' => $date,
                 'hour' => $hour,
@@ -92,13 +102,10 @@ class BookingController extends AbstractController
                 'departure_station_id' => $departureStation['id'],
                 'arrival_station_id' => $arrivalStation['id'],
             ];
-
             $bookingManager = new bookingManager();
             $customerId = $bookingManager->insertUser($user);
-
             $bookingManager->insertBooking($booking, $customerId);
-
-            return $this->twig->render('Booking/recapitulatif.html.twig', [
+            return $this->twig->render('Booking/recap.twig', [
                 'user' => $user,
                 'vehicle' => $vehicle,
                 'departureStation' => $departureStation['station_name'],
@@ -138,7 +145,7 @@ class BookingController extends AbstractController
 
             $bookingManager = new bookingManager();
             $bookingManager->insertUser($user);
-            return $this->twig->render('Booking/recapitulatif.html.twig', [
+            return $this->twig->render('Booking/recap.twig', [
                 'user' => $user,
                 'vehicle' => $vehicle,
                 'departureStation' => $departureStation['station_name'],

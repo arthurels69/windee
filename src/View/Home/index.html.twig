@@ -31,7 +31,7 @@
                 <select name="depart"  id="departureStation" class="form-control mb-3">
                     <option selected>Sélectionnez...</option>
                     {% for station in stations %}
-                    <option>{{ station.station_name }}</option>
+                    <option value="{{ station.id }}">{{ station.station_name }}</option>
 
                     {% endfor %}
                 </select>
@@ -40,7 +40,7 @@
                 <select name="arrivee" id="arrivalStation" class="form-control mb-3">
                     <option selected>Sélectionnez...</option>
                     {% for station in stations %}
-                        <option>{{ station.station_name }}</option>
+                        <option value="{{ station.id }}">{{ station.station_name }}</option>
 
                     {% endfor %}
                 </select>
