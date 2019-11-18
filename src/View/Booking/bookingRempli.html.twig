@@ -26,7 +26,7 @@
                 <div class="form-group col-md-4">
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
                     <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
-                        <option selected>Sélectionnez...</option>
+                        <option>Sélectionnez...</option>
                         {% for vehicle in arrayStation.vehicle %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
 

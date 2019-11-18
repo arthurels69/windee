@@ -29,6 +29,7 @@ class BookingController extends AbstractController
         $stationA = "";
         $listeVehicule = new VehicleManager();
         $listeVehicule = $listeVehicule->selectAll();
+        $error='Merci de selectionner deux stations différentes';
         if (isset($_POST['id'])) {
             $stations = $_POST['id'];
             $stations = explode('-', $stations);
@@ -44,6 +45,15 @@ class BookingController extends AbstractController
         if (isset($_POST['depart'])) {
             $stationA = new StationManager();
             $stationA=$stationA->selectOneById($_POST['arrivee']);
+        }
+        if ($stationA === $stationD) {
+            $listeStations=new StationManager();
+            $liste=$listeStations->selectAll();
+
+            return $this->twig->render('Home/index.html.twig', [
+                'stations'=>$liste,
+                'error'=>$error
+            ]);
         }
         $arrayStation = ['stationD' => $stationD, 'stationA' => $stationA];
         $arrayStation['vehicle'] = $listeVehicule;
@@ -62,8 +72,6 @@ class BookingController extends AbstractController
             $arrivee = (int)$_POST['arrivee'];
             $error='Merci de selectionner deux stations différentes';
             if ($depart === $arrivee) {
-                var_dump($depart);
-                var_dump($arrivee);
                 $listeVehicule = new VehicleManager();
                 $listeVehicule = $listeVehicule->selectAll();
                 $listeStations = new StationManager();

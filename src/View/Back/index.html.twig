@@ -35,7 +35,7 @@
                 <form action="/back/{{ path }}/{{ currentStation.id }}" method="post">
                     <div class="form-group d-flex flex-column">
                         <label>Nom de Station</label>
-                        <input name="station_name" value="{{ currentStation.station_name }}" required maxlength="45" pattern="[A-Z][A-Za-z' -]+">
+                        <input name="station_name" value="{{ currentStation.station_name }}" required maxlength="45" pattern="[A-Za-z' -]+">
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Numero Rue</label>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Nom de la rue</label>
-                        <input name="street_name" value="{{ currentStation.street_name }}" required maxlength="45" pattern="[A-Z][A-Za-z' -]+">
+                        <input name="street_name" value="{{ currentStation.street_name }}" required maxlength="45" pattern="[A-Za-z' -]+">
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Code Postal</label>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group d-flex flex-column">
                         <label>Ville</label>
-                        <input name="city" value="{{ currentStation.city }}" required maxlength="45" pattern="[A-Z][A-Za-z' -]+">
+                        <input name="city" value="{{ currentStation.city }}" required maxlength="45" pattern="[A-Za-z' -]+">
                     </div>
                     <button type="submit">{{ button }}</button>
                     <a onclick="return(confirm('Etes-vous sûr de vouloir supprimer ?'));" href="/back/delete/{{ currentStation.id }}">{{ buttonDelete }}</a>

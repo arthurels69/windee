@@ -3,7 +3,11 @@
 
 {% block content %}
 
-
+  {% if error is defined  %}
+      <div class="alert alert-danger text-center">
+          {{ error }}
+      </div>
+  {% endif %}
     <div class="container-fluid">
 
         <div class="row_banniere">
