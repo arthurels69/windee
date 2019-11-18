@@ -23,8 +23,8 @@ class HistoryController extends AbstractController
             $bookingManager = new BookingManager();
             $bookings = $bookingManager->selectManyByEmail($email);
 /*                var_dump($customer);
-            var_dump($booking);*/
-
+            */
+            var_dump($bookings);
             return $this->twig->render('History/index.html.twig', [
                 'bookings' => $bookings
             ]);

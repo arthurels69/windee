@@ -34,24 +34,23 @@
                 <h2>Ajout de vehicules</h2>
                 <form action="/vehicle/{{ path }}/{{ currentvehicle.id }}" method="post">
                     <div class="form-group d-flex flex-column">
-                        <label>Nom de vehicle</label>
+                        <label>Capacité</label>
                         <input name="capacity" value="{{ currentvehicle.capacity }}" required pattern="[0-9]"  maxlength="1">
                     </div>
                     <div class="form-group d-flex flex-column">
-                        <label>Numero</label>
-                        <input name="registration" value="{{ currentvehicle.registration }}" required pattern="[0-9][A-B]" maxlength="7">
+                        <label>Immatriculation</label>
+                        <input type="number" name="registration" value="{{ currentvehicle.registration }}" required  maxlength="7">
                     </div>
                     <div class="form-group d-flex flex-column">
-                        <label>Nom de la rue</label>
-                        <input name="technical_control" value="{{ currentvehicle.technical_control }}" required pattern="(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d
-">
+                        <label>Date rappel Contrôle Technique</label>
+                        <input type="date" class="form-control" value="2019-11-08" placeholder="Date" name="technical_control" required>
                     </div>
                     <div class="form-group d-flex flex-column">
-                        <label>Code Postal</label>
-                        <input name="price" value="{{ currentvehicle.price }}" required pattern="[0-9]"  maxlength="3">
+                        <label>Prix</label>
+                        <input name="price" value="{{ currentvehicle.price }}" required type="number" maxlength="3">
                     </div>
                     <button type="submit">{{ button }}</button>
-                    <a href="/vehicle/delete/{{ currentvehicle.id }}">{{ buttonDelete }}<a>
+                    <a onclick="return(confirm('Etes-vous sûr de vouloir supprimer ?'));" href="/vehicle/delete/{{ currentvehicle.id }}">{{ buttonDelete }}</a>
                 </form>
 
             </div>
