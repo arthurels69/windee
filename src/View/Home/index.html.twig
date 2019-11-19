@@ -33,7 +33,7 @@
             <form class=" col-sm-8 ml-auto mr-auto offset-2 col-md-4 order-md-1 text-center mb-5" method="post" action="/Booking/bookingRempli">
                 <label>Départ</label><br>
                 <select name="depart"  id="departureStation" class="form-control mb-3">
-                    <option selected>Sélectionnez...</option>
+                    <option value="" selected>Sélectionnez...</option>
                     {% for station in stations %}
                     <option value="{{ station.id }}">{{ station.station_name }}</option>
 
@@ -42,7 +42,7 @@
 
                 <label>Arrivée</label><br>
                 <select name="arrivee" id="arrivalStation" class="form-control mb-3">
-                    <option selected>Sélectionnez...</option>
+                    <option value="" selected>Sélectionnez...</option>
                     {% for station in stations %}
                         <option value="{{ station.id }}">{{ station.station_name }}</option>
 
@@ -81,9 +81,9 @@
                     <input type="hidden"
                            name="id"
                            value="{{ stations.2.id }}-{{ stations.3.id }}">
-                    <div class="img_center">
-                        <img src="../assets/images/terreaux200x180.jpg" class="rounded-circle mb-4">
-                        <img src="../assets/images/part_dieu200x180.jpg" class="rounded-circle mb-4">
+                    <div class="img_center justify-content-center m-0">
+                        <img src="../assets/images/terreaux200x180.jpg" class="rounded-circle mb-4 ">
+                        <img src="../assets/images/part_dieu200x180.jpg" class="rounded-circle mb-4 ">
                     </div>
                     <p>Nous pouvons vous proposer un trajet entre {{  stations.2.station_name}} et {{  stations.3.station_name}}  en un temps record</p>
                     <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>
