@@ -84,9 +84,7 @@ button {
 .trajet_left{
     margin-bottom: 40px;
 }
-.img_left{
-    border-radius: 50%;
-}
+
 .img_left img:last-child{
     display: none;
     -webkit-transform: scale(1);
@@ -99,19 +97,18 @@ button {
 }
 .img_left:hover img:last-child{
     display: block;
+    margin: auto;
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
-.img_center{
-    border-radius: 50%;
-}
+
 .img_center img:last-child{
     display: none;
+    margin: auto;
     -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+
+
 }
 .img_center:hover img:first-child{
     display: none;
@@ -119,13 +116,11 @@ button {
 }
 .img_center:hover img:last-child{
     display: block;
+    margin: auto;
     -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+
 }
 
-.img_right{
-    border-radius: 50%;
-}
 .img_right img:last-child{
     display: none;
     -webkit-transform: scale(1);
@@ -141,8 +136,7 @@ button {
 .img_right:hover img:last-child{
     display: block;
     -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-
+    margin:auto;
 }
 @media screen and (max-width: 940px) {
     .textConcept{
