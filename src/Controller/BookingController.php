@@ -30,7 +30,7 @@ class BookingController extends AbstractController
         $listeVehicule = new VehicleManager();
         $listeVehicule = $listeVehicule->selectAll();
         $error = 'Merci de selectionner deux stations différentes';
-        if (isset($_POST['depart']) || isset($_POST['arrivee'])) {
+       /* if (isset($_POST['depart']) || isset($_POST['arrivee'])) {
             if (empty($_POST['depart'] || empty($_POST['arrivee']))) {
                 $listeStations = new StationManager();
                 $liste = $listeStations->selectAll();
@@ -40,7 +40,7 @@ class BookingController extends AbstractController
                     'error' => $error
                 ]);
             }
-        }
+        }*/
         if (isset($_POST['id'])) {
             $stations = $_POST['id'];
             $stations = explode('-', $stations);
@@ -49,14 +49,22 @@ class BookingController extends AbstractController
             $stationD = $stationD->selectOneById(intval($stations[0]));
             $stationA = $stationA->selectOneById(intval($stations[1]));
         }
-        if (isset($_POST['depart'])) {
+        if (isset($_POST['depart']) || isset($_POST['arrivee'])) {
+            if (($_POST['depart']==="" || ($_POST['arrivee'])==="")) {
+                $listeStations = new StationManager();
+                $liste = $listeStations->selectAll();
+                $error = "Merci de selectionner 2 stations";
+                return $this->twig->render('Home/index.html.twig', [
+                    'stations' => $liste,
+                    'error' => $error
+                ]);
+            }
             $stationD = new StationManager();
             $stationD = $stationD->selectOneById($_POST['depart']);
-        }
-        if (isset($_POST['arrivee'])) {
             $stationA = new StationManager();
             $stationA = $stationA->selectOneById($_POST['arrivee']);
         }
+
         if ($stationA === $stationD) {
             $listeStations = new StationManager();
             $liste = $listeStations->selectAll();
