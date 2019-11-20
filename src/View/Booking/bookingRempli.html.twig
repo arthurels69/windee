@@ -26,7 +26,7 @@
                 <div class="form-group col-md-4">
                     <label for="inputDate">Capacité Vehicule Souhaité</label>
                     <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
-                        <option>Sélectionnez...</option>
+                        <option value="">Sélectionnez...</option>
                         {% for vehicle in arrayStation.vehicle %}
                             <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
 
@@ -76,7 +76,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Ville</label>
-                    <input type="text" class="form-control" id="inputCity" required maxlength="20" pattern="[A-Za-z' -]+">
+                    <input type="text" name="city" class="form-control" id="inputCity" required maxlength="20" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pays</label>

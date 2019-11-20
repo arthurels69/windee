@@ -3,6 +3,8 @@
 
 namespace App\Controller;
 
+use App\Model\BookingManager;
+use App\Model\StationManager;
 use App\Model\VehicleManager;
 
 class VehicleController extends AbstractController
@@ -70,6 +72,23 @@ class VehicleController extends AbstractController
     public function delete($id)
     {
         $vehicle = new vehicleManager();
+        $reservation = new BookingManager();
+        $reservation = $reservation->selectAll();
+        $error = "Station présente dans une réservation";
+        foreach ($reservation as $booking) {
+            if ($booking['id'] === $id) {
+                $vehicles = new VehicleManager();
+                $vehicles = $vehicles->selectAll();
+                $path = 'add';
+                $button = 'Ajouter';
+                return $this->twig->render("Vehicle/vehicle.html.twig", [
+                    'vehicles' => $vehicles,
+                    'path' => $path,
+                    "button" => $button,
+                    "error" => $error
+                ]);
+            }
+        }
         $vehicle = $vehicle->delete($id);
         header("location:/Vehicle/vehicle");
     }

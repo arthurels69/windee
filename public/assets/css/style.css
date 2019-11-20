@@ -43,7 +43,7 @@
     width: 100%;
 
 }
-.textConcept{
+/*.textConcept{
     color: white;
     position: absolute;
 
@@ -53,6 +53,22 @@
     width: 25%;
     text-align: justify;
     margin-left: 5%;
+}*/
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    width: 25%;
+    height: 20%;
+    margin-right: 10%;
+}
+.imagePres{
+
+    position: relative;
+    text-align: center;
+    color: white;
+
 }
 
 .concept{
@@ -139,16 +155,19 @@ button {
     margin:auto;
 }
 @media screen and (max-width: 940px) {
-    .textConcept{
-        font-size: 0.8em;
-        top: 70%;
+    .bottom-right {
+        font-size: 0.6em;
+       padding-top: 0;
+        margin-right: 0%;
+        margin-bottom: 40%;
     }
 }
 
 @media screen and (min-width: 768px) {
 
     form {
-        width: 50%;
+        width: 100%;
+
     }
 
 }
