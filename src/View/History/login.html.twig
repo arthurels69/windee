@@ -4,8 +4,14 @@
 
 {% block content %}
 
+    {% if error is defined  %}
+        <div class="alert alert-danger text-center">
+            {{ error }}
+        </div>
+    {% endif %}
+
     <h2 class="user-login-title">M'identifier</h2>
-    <form action="" method="post">
+    <form action="/history/index" method="post">
         <div class="form user-login-form">
 
             <div class="form-group">
