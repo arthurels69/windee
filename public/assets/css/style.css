@@ -42,6 +42,7 @@
 .row_banniere img{
     width: 100%;
 
+
 }
 /*.textConcept{
     color: white;
@@ -163,14 +164,7 @@ button {
     }
 }
 
-@media screen and (min-width: 768px) {
 
-    form {
-        width: 100%;
-
-    }
-
-}
 
 /* page history login */
 
