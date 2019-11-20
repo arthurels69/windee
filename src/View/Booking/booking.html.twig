@@ -19,9 +19,9 @@
                 <div class="form-group col-md-6">
                     <label for="departureStation">Station de départ</label>
                     <select name="depart" id="departureStation" class="form-control" required>
-                        <option selected>Sélectionnez...</option>
+                        <option value="0" selected>Sélectionnez..</option>
                         {% for station in tabDetails.stations %}
-                            <option value="{{ station.id }}">{{ station.station_name }}</option>
+                            <option  {% if booking.departure_station_id == station.id %} selected {% endif %}  value="{{ station.id }}">{{ station.station_name }}</option>
 
                         {% endfor %}
                     </select>
@@ -29,9 +29,9 @@
                 <div class="form-group col-md-6">
                     <label for="arrivalStation">Station d'arrivée</label>
                     <select id="arrivalStation" class="form-control" name="arrivee" required>
-                        <option selected>Sélectionnez...</option>
+                        <option  value="">Sélectionnez...</option>
                         {% for station in tabDetails.stations %}
-                            <option value="{{ station.id }}">{{ station.station_name }}</option>
+                            <option {% if booking.arrival_station_id == station.id %} selected {% endif %} value="{{ station.id }}" >{{ station.station_name }}</option>
 
                         {% endfor %}
                     </select>
@@ -39,33 +39,34 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="inputDate">Capacité Vehicule Souhaité</label>
-                    <select id="VehiculeCapacite" class="form-control" required name="capacite" required>
-                        <option selected>Sélectionnez...</option>
+
+                    <label for="inputDate">Capacité Vehicule</label>
+                    <select id="VehiculeCapacite" class="form-control"  name="capacite">
+                        <option value="">Sélectionnez...</option>
                         {% for vehicle in tabDetails.vehicles %}
-                            <option value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
+                            <option  {% if booking.vehicle_id == vehicle.id %} selected {% endif %}  value="{{ vehicle.id }}">{{ vehicle.capacity }}</option>
 
                         {% endfor %}
                     </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-5">
                     <label for="inputDate">Date</label>
-                    <input type="date" class="form-control" id="inputFirstname" value="2019-11-08" placeholder="Date" name="date" required>
+                    <input type="date" class="form-control" id="inputFirstname" value="{{ booking.date }}" placeholder="Date" name="date" required>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3">
                     <label for="inputHeure">Heure</label>
-                    <input type="time" class="form-control" id="inputLastname" placeholder="Heure" value="07:00" required name="hour" required>
+                    <input type="time" class="form-control" id="inputLastname"  placeholder="Heure" value="07:00" required name="hour" required>
                 </div>
 
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
                     <label for="inputFirstname">Prénom</label>
-                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="firstname" required maxlength="45" pattern="[A-Za-z' -]+">
+                    <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="firstname" value="{{ user.firstname }}" required maxlength="45" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-5">
                     <label for="inputLastname">Nom</label>
-                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom"  name="lastname" required maxlength="45" pattern="[A-Za-z' -]+">
+                    <input type="text" class="form-control" id="inputLastname" placeholder="Nom"  name="lastname" value="{{user.lastname}}" required maxlength="45" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-2">
                     <label for="inputAge">Age</label>
@@ -76,26 +77,26 @@
 
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" required maxlength="45">
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" value="{{ user.email }}" required maxlength="45">
             </div>
 
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="*****" name="password" required maxlength="20" minlength="5">
+                <input type="password" class="form-control" id="inputPassword" placeholder="*****" name="password" value="{{ user.password }}"  required maxlength="20" minlength="5">
             </div>
 
             <div class="form-group">
                 <label for="inputAddress">Adresse</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine" name="address" required maxlength="45" minlength="5">
+                <input type="text" class="form-control" id="inputAddress" placeholder="17 rue Delandine" name="address" value="{{ user.address }}" required maxlength="45" minlength="5">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">Ville</label>
-                    <input type="text" class="form-control" id="inputCity" required maxlength="20" pattern="[A-Za-z' -]+">
+                    <input name="city" type="text" class="form-control" id="inputCity" value="{{ city }}" required maxlength="20" pattern="[A-Za-z' -]+">
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pays</label>
-                    <select id="inputState" class="form-control" name="country" required >
+                    <select id="inputState" class="form-control" name="country"  required >
                         <option selected>France</option>
                         <option>Autre</option>
                     </select>

@@ -3,20 +3,24 @@
 
 {% block content %}
 
-
+  {% if error is defined  %}
+      <div class="alert alert-danger text-center">
+          {{ error }}
+      </div>
+  {% endif %}
     <div class="container-fluid">
 
         <div class="row_banniere">
 
+            <div class="imagePres">
+                <img src="../assets/images/airbus_taxidrone.jpg">
+                <div class="bottom-right">
+                    Envolez-vous avec Windee, première compagnie de taxis drone de Lyon ! Pour un trajet rapide et efficace
+                    avec zéro émission de CO² dans un de nos véhicules autonomes
+                    à la pointe de la technologie !
+                </div>
+            </div>
 
-            <img src="../assets/images/airbus_taxidrone.jpg">
-
-
-        <p class="textConcept">
-            Envolez-vous avec Windee, première compagnie de taxis drone de Lyon ! Pour un trajet rapide et efficace
-            avec zéro émission de CO² dans un de nos véhicules autonomes
-            à la pointe de la technologie !
-        </p>
 
 
 
@@ -24,12 +28,12 @@
         <div class="row ">
 
             <iframe class=" col-sm-6 ml-auto mr-auto offset-2 col-md-6 order-md-2 mb-5"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2784.2419639501527!2d4.824980115793922!3d45.74629492259623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea4ac9e1fd2f%3A0xabc36e768b27c9a0!2sWild%20Code%20School%20-%20Formation%20d%C3%A9veloppeur%20web%20%26%20data%20analyst!5e0!3m2!1sfr!2sfr!4v1571919383091!5m2!1sfr!2sfr" width="600" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            src="https://www.google.com/maps/d/embed?mid=10Mxy47kIapV95EhorpJhfOZoCmf6-R5M&hl=fr" width="600" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 
             <form class=" col-sm-8 ml-auto mr-auto offset-2 col-md-4 order-md-1 text-center mb-5" method="post" action="/Booking/bookingRempli">
                 <label>Départ</label><br>
                 <select name="depart"  id="departureStation" class="form-control mb-3">
-                    <option selected>Sélectionnez...</option>
+                    <option value="" selected>Sélectionnez...</option>
                     {% for station in stations %}
                     <option value="{{ station.id }}">{{ station.station_name }}</option>
 
@@ -38,7 +42,7 @@
 
                 <label>Arrivée</label><br>
                 <select name="arrivee" id="arrivalStation" class="form-control mb-3">
-                    <option selected>Sélectionnez...</option>
+                    <option value="" selected>Sélectionnez...</option>
                     {% for station in stations %}
                         <option value="{{ station.id }}">{{ station.station_name }}</option>
 
@@ -77,9 +81,9 @@
                     <input type="hidden"
                            name="id"
                            value="{{ stations.2.id }}-{{ stations.3.id }}">
-                    <div class="img_center">
-                        <img src="../assets/images/terreaux200x180.jpg" class="rounded-circle mb-4">
-                        <img src="../assets/images/part_dieu200x180.jpg" class="rounded-circle mb-4">
+                    <div class="img_center justify-content-center m-0">
+                        <img src="../assets/images/terreaux200x180.jpg" class="rounded-circle mb-4 ">
+                        <img src="../assets/images/part_dieu200x180.jpg" class="rounded-circle mb-4 ">
                     </div>
                     <p>Nous pouvons vous proposer un trajet entre {{  stations.2.station_name}} et {{  stations.3.station_name}}  en un temps record</p>
                     <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>

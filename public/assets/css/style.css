@@ -43,16 +43,36 @@
     width: 100%;
 
 }
-.textConcept{
+/*.textConcept{
     color: white;
     position: absolute;
 
-    top: 550px;
-    right: 50px;
+    top: 90%;
+    right: 5%;
     opacity: 2;
     width: 25%;
     text-align: justify;
     margin-left: 5%;
+}*/
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    width: 25%;
+    height: 20%;
+    margin-right: 10%;
+}
+.imagePres{
+
+    position: relative;
+    text-align: center;
+    color: white;
+
+}
+
+.concept{
+    text-align: justify;
 }
 iframe{
     margin-top: 30px;
@@ -80,9 +100,7 @@ button {
 .trajet_left{
     margin-bottom: 40px;
 }
-.img_left{
-    border-radius: 50%;
-}
+
 .img_left img:last-child{
     display: none;
     -webkit-transform: scale(1);
@@ -95,19 +113,18 @@ button {
 }
 .img_left:hover img:last-child{
     display: block;
+    margin: auto;
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
 }
 
-.img_center{
-    border-radius: 50%;
-}
+
 .img_center img:last-child{
     display: none;
+    margin: auto;
     -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
+
+
 }
 .img_center:hover img:first-child{
     display: none;
@@ -115,13 +132,11 @@ button {
 }
 .img_center:hover img:last-child{
     display: block;
+    margin: auto;
     -webkit-transform: scale(1.2);
-    transform: scale(1.2);
+
 }
 
-.img_right{
-    border-radius: 50%;
-}
 .img_right img:last-child{
     display: none;
     -webkit-transform: scale(1);
@@ -137,15 +152,22 @@ button {
 .img_right:hover img:last-child{
     display: block;
     -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-
+    margin:auto;
 }
-
+@media screen and (max-width: 940px) {
+    .bottom-right {
+        font-size: 0.6em;
+       padding-top: 0;
+        margin-right: 0%;
+        margin-bottom: 40%;
+    }
+}
 
 @media screen and (min-width: 768px) {
 
     form {
-        width: 50%;
+        width: 100%;
+
     }
 
 }

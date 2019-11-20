@@ -51,7 +51,7 @@ class BookingManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare("
-            SELECT b.date, b.hour,
+            SELECT b.date, b.hour,b.statut,
                    c.firstname, c.lastname, c.email,
                    v.capacity,
                    sd.station_name departure_station,
@@ -67,5 +67,17 @@ class BookingManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function updateStatut(array $booking): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("UPDATE $this->table
+         SET `statut` = :statut
+         WHERE id=:id");
+        $statement->bindValue('statut', $booking['statut'], \PDO::PARAM_STR);
+        $statement->bindValue('id', $booking['id'], \PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 }
