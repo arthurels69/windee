@@ -26,6 +26,11 @@
 .navbar-brand {
     font-size: 2.5em;
 }
+.logo_drone{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
 
 .textenav{
     color: white;
