@@ -1,4 +1,12 @@
 /* css footer */
+#footerBack{
+    height: 62px;
+
+}
+.userloginForm{
+   margin-bottom: 230px;
+    margin-top: 150px;
+}
 .page-footer{
     background-color:#6495ed ;
     color: white;
@@ -115,6 +123,9 @@ h2 {
 form {
     width: 80%;
     margin: 30px auto;
+}
+.formBack{
+    width: 60%;
 }
 
 button {
