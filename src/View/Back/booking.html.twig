@@ -1,0 +1,46 @@
+{% extends 'Back/layout.html.twig' %}
+
+{% block  content %}
+
+
+    <h2>Gérer les réservations</h2>
+
+    <div class="container-fluid">
+        <div class="row mt-6 justify-content-center">
+            <div class=" col-md-6 col-sm-8 center-block ">
+                <h2>Les stations</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Station départ</th>
+                        <th scope="col">Station arrivée</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">heure</th>
+                        <th scope="col">Mail client</th>
+                        <th scope="col">Etat</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for booking in bookings %}
+                        <tr>
+                            <th scope="row">{{ station.id }}</th>
+                            <td>{{ booking.departure_station_id }}</td>
+                            <td>{{ booking.arrival_station_id }}</td>
+                            <td>{{ booking.date }} </td>
+                            <td>{{ booking.hour }}  </td>
+                            <td><a>{{ booking.customer_id }}</a></td>
+                            <td>{{ booking.statut }}</td>
+                            <td><a class="btn btn-primary" href="/back/statut/{{ booking.id }}/valider">valider</a></td>
+                            <td><a class="btn btn-danger" href="/back/statut/{{ booking.id }}/refuser">refuser</a></td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

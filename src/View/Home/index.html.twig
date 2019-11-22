@@ -1,5 +1,117 @@
 {% extends 'layout.html.twig' %}
 
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
+
+  {% if error is defined  %}
+      <div class="alert alert-danger text-center">
+          {{ error }}
+      </div>
+  {% endif %}
+    <div class="container-fluid">
+
+        <div class="row_banniere">
+
+            <div class="imagePres">
+                <img class="imgB"  src="../assets/images/dronetaxi3.jpg">
+                <div class="bottom-right ">
+                    Envolez-vous avec Windee, première compagnie de taxis drone de Lyon ! Pour un trajet rapide et efficace
+                    avec zéro émission de CO² dans un de nos véhicules autonomes
+                    à la pointe de la technologie
+                </div>
+            </div>
+
+
+
+
+
+        <div class="row mt-5 pt-5 ">
+
+            <iframe class=" col-sm-6 ml-auto mr-auto offset-2 col-md-6 order-md-2 mb-5"
+            src="https://www.google.com/maps/d/embed?mid=10Mxy47kIapV95EhorpJhfOZoCmf6-R5M&hl=fr" width="600" height="400" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+            <form class=" col-sm-8 ml-auto mr-auto offset-2 col-md-4 order-md-1 text-center mb-5" method="post" action="/Booking/bookingRempli">
+                <label>Départ</label><br>
+                <select name="depart"  id="departureStation" class="form-control mb-3">
+                    <option value="" selected>Sélectionnez...</option>
+                    {% for station in stations %}
+                    <option value="{{ station.id }}">{{ station.station_name }}</option>
+
+                    {% endfor %}
+                </select>
+
+                <label>Arrivée</label><br>
+                <select name="arrivee" id="arrivalStation" class="form-control mb-3">
+                    <option value="" selected>Sélectionnez...</option>
+                    {% for station in stations %}
+                        <option value="{{ station.id }}">{{ station.station_name }}</option>
+
+                    {% endfor %}
+                </select>
+                <button class="btn btn-primary submit mt-4 text-white " >Réserver</button>
+            </form>
+
+
+
+
+        </div>
+    </div>
+<div class="trajets mr-2 ml-2 border-top">
+    <h4 class="text-center mr-2 ml-2 mb-5 mt-5 "></h4>
+
+    <div class="container-fluid mt-5 ">
+        <div class="row d-flex justify-content-around ">
+            <div class=" card col-xl-2 col-lg-3  col-sm-8 imgCorps text-center mb-4">
+                <form action="/booking/bookingRempli" method="post">
+                    <input type="hidden"
+                           name="id"
+                           value={{ stations.0.id }}-{{ stations.1.id }}>
+                    <div class="img_left">
+                        <img src="../assets/images/bellecour200x180.jpg" class="rounded-circle mb-4">
+                        <img src="../assets/images/st_exupery200x180.jpg" class="rounded-circle mb-4">
+                    </div>
+                    <div class="card-body bg-">
+                        <p class=" trajet_left ">Nous pouvons vous proposer un trajet entre {{  stations.0.station_name}} et {{  stations.1.station_name}}  en un temps record</p>
+                        <button class="btn btn-primary submit text-white mb-0 " type="submit">Réserver</button>
+                    </div>
+
+                </form>
+            </div >
+            <div class="card col-xl-2 col-lg-3 col-sm-8 imgCorps text-center mb-4">
+                <form action="/booking/bookingRempli" method="post">
+                    <input type="hidden"
+                           name="id"
+                           value="{{ stations.2.id }}-{{ stations.3.id }}">
+                    <div class="img_center justify-content-center m-0">
+                        <img src="../assets/images/terreaux200x180.jpg" class="rounded-circle mb-4 ">
+                        <img src="../assets/images/part_dieu200x180.jpg" class="rounded-circle mb-4 ">
+                    </div>
+                    <div class="card-body">
+                        <p>Nous pouvons vous proposer un trajet entre {{  stations.2.station_name}} et {{  stations.3.station_name}}  en un temps record</p>
+                        <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>
+                    </div>
+
+                </form>
+            </div >
+            <div class=" card col-xl-2 col-lg-3  col-sm-8 imgCorps  text-center mb-4">
+                <form action="/booking/bookingRempli" method="post">
+                    <input type="hidden"
+                           name="id"
+                           value="{{ stations.4.id }}-{{ stations.1.id }}">
+                    <div class="img_right">
+                        <img src="../assets/images/fourviere200x180.jpg" class="rounded-circle mb-4">
+                        <img src="../assets/images/st_exupery200x180.jpg" class="rounded-circle mb-4">
+                    </div>
+                    <div class="card-body">
+                        <p>Nous pouvons vous proposer un trajet entre {{  stations.4.station_name}} et {{  stations.1.station_name}}  en un temps record</p>
+                        <button class="btn btn-primary submit mt-4 text-white " type="submit">Réserver</button>
+                    </div>
+
+                </form>
+            </div >
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+

@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+
+
+
+{% block content %}
+
+<div class="container text-center mt-5">
+    <h2>Vos réservations</h2>
+    <ul>
+    {% for booking in bookings %}
+        <li class="card">
+            <p>Réservation pour :</p>
+            <p>{{ booking.firstname ~ ' ' ~ booking.lastname }}</p>
+            <p>{{ booking.email }}</p>
+            <p>Date : {{ booking.date }}</p>
+            <p>Heure : {{ booking.hour }}</p>
+            <p>Station de départ : {{ booking.departure_station }}</p>
+            <p>Station d'arrivée : {{ booking.arrival_station }}</p>
+            <p>Capacité du véhicule : {{ booking.capacity }} places</p>
+            <p>État de la réservation : {{ booking.statut }}</p>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

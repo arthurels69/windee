@@ -1,0 +1,344 @@
+body{
+    background: whitesmoke;
+
+}
+/*login*/
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url("../images/drone-taxi-Uber-bell-nexus-CES-20191.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.login-heading {
+    font-weight: 300;
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    border-radius: 2rem;
+}
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+    padding: var(--input-padding-y) var(--input-padding-x);
+    height: auto;
+    border-radius: 2rem;
+}
+
+.form-label-group>label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    cursor: text;
+    /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::placeholder {
+    color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+    padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+    padding-top: calc(var(--input-padding-y) / 3);
+    padding-bottom: calc(var(--input-padding-y) / 3);
+    font-size: 12px;
+    color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+
+@supports (-ms-ime-align: auto) {
+    .form-label-group>label {
+        display: none;
+    }
+    .form-label-group input::-ms-input-placeholder {
+        color: #777;
+    }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+    .form-label-group>label {
+        display: none;
+    }
+    .form-label-group input:-ms-input-placeholder {
+        color: #777;
+    }
+}
+
+
+/* css footer */
+#footerBack{
+    height: 62px;
+
+}
+.userloginForm{
+   margin-bottom: 230px;
+    margin-top: 150px;
+}
+.page-footer{
+    background-color:#6495ed ;
+    color: white;
+}
+.footer-social a{
+
+    margin: 2%;
+
+}
+.page-footer a{
+    text-decoration: none;
+}
+.footer-a a:hover{
+    color: lightgrey!important;
+}
+/*css navbar*/
+.navbar-nav a:hover{
+    color: lightgrey!important;
+}
+.nav-item{
+    text-align: center;
+}
+
+
+.navbar-brand {
+    font-size: 2.5em;
+}
+.logo_drone{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.textenav{
+    color: white;
+}
+nav a{
+    font-size: 1.5em;
+}
+
+/* style homepage */
+.container-fluid{
+    padding: 0;
+}
+.banniere{
+    padding: 0;
+
+}
+
+.row_banniere img{
+    width: 100%;
+
+
+}
+.trajets{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-top: 5%;
+}
+
+.card{
+    background-color: #E4EAEF;
+    font-family: Laksaman bold;
+}
+/*.textConcept{
+    color: white;
+    position: absolute;
+
+    top: 90%;
+    right: 5%;
+    opacity: 2;
+    width: 25%;
+    text-align: justify;
+    margin-left: 5%;
+}*/
+
+.bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    width: 25%;
+    height: 20%;
+    margin-right: 3%;
+    margin-bottom: 32%;
+    font-size:1.3em;
+}
+.imagePres{
+
+    position: relative;
+    text-align: center;
+    color: white;
+    background: linear-gradient(blue, white);
+}
+
+.imgB{
+
+
+
+}
+
+.concept{
+    text-align: justify;
+}
+iframe{
+    margin-top: 30px;
+}
+/*style booking */
+
+h2 {
+    text-align: center;
+    margin: 50px 0;
+}
+
+form {
+    width: 80%;
+    margin: 30px auto;
+}
+.formBack{
+    width: 60%;
+}
+
+button {
+    margin: 20px 0;
+}
+
+.row p{
+    text-align: justify;
+}
+
+.trajet_left{
+    margin-bottom: 40px;
+}
+
+.img_left img:last-child{
+    display: none;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+.img_left:hover img:first-child{
+    display: none;
+}
+.img_left:hover img:last-child{
+    display: block;
+    margin: auto;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+
+.img_center img:last-child{
+    display: none;
+    margin: auto;
+    -webkit-transform: scale(1);
+
+
+}
+.img_center:hover img:first-child{
+    display: none;
+
+}
+.img_center:hover img:last-child{
+    display: block;
+    margin: auto;
+    -webkit-transform: scale(1.2);
+
+}
+
+.img_right img:last-child{
+    display: none;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+
+}
+.img_right:hover img:first-child{
+    display: none;
+
+}
+.img_right:hover img:last-child{
+    display: block;
+    -webkit-transform: scale(1.2);
+    margin:auto;
+}
+@media screen and (max-width: 940px) {
+    .bottom-right {
+        font-size: 0.6em;
+       padding-top: 0;
+        margin-right: -2%;
+        margin-bottom: 30%;
+    }
+}
+
+
+
+/* page history login */
+
+.user-login-form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.user-login-button {
+    text-align: center;
+}
+
+/*page final */
+.final{
+    margin-top: 200px ;
+    margin-bottom: 200px;
+    text-align: center;
+}
+
+
