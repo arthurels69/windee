@@ -91,7 +91,7 @@ class BackController extends AbstractController
             }
         }
         $station = $station->delete($id);
-        header('location/Back/index');
+        header('location:/Back/index');
     }
 
     public function login()
