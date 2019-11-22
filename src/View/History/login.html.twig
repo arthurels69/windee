@@ -10,24 +10,38 @@
         </div>
     {% endif %}
 
-    <h2 class="user-login-title">M'identifier</h2>
-    <form action="/history/index" method="post">
-        <div class="form user-login-form">
 
-            <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" required>
-            </div>
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4 offset-2">M'identifier</h3>
+                                <form method="Post" action="/history/index">
+                                    <div class="form-label-group">
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address"  name="email" required autofocus>
+                                        <label for="inputEmail">Email address</label>
+                                    </div>
 
-            <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="*****" name="password"
-                       required>
-            </div>
-            <div class="user-login-button">
-                <button type="submit" class="btn btn-primary">M'identifier!</button>
+                                    <div class="form-label-group">
+                                        <input type="password" id="inputPassword" class="form-control"  placeholder="Password" name="password" required>
+                                        <label for="inputPassword">Password</label>
+                                    </div>
+
+                                    <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Se connecter</button>
+                                    <div class="text-center">
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
+
 
 {% endblock %}
